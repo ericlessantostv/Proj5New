@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -15,9 +16,10 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
-    @Override
+@Override
     public void start(Stage primaryStage) {
+        VBox box = new VBox();
+        box.setAlignment(Pos.CENTER);
         Parent root = null;
         var loc = getClass().getResource("Main.fxml");
         try{
@@ -26,10 +28,15 @@ public class Main extends Application {
             System.out.println("Unable to find the FXML file");
             e.printStackTrace();
         }
-        Scene windowContents = new Scene(root, 300, 400);
+        Scene windowContents = new Scene(box, 300, 400);
         primaryStage.setScene(windowContents);
         primaryStage.setTitle("Project 5");
+        primaryStage.setResizable(false);
         primaryStage.show();
+        Button button1 = new Button("Makeup");
+        button1.setPrefSize(130,30);
+        button1.setTranslateY(-100);
+        box.getChildren().add(button1);
 
     }
 
