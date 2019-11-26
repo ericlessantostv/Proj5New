@@ -37,6 +37,12 @@ public class Main extends Application {
         button1.setPrefSize(130,30);
         button1.setTranslateY(-100);
         box.getChildren().add(button1);
+        Button button2 = new Button("Star Wars");
+        button2.setPrefSize(130,30);
+        button2.setTranslateY(-70);
+        box.getChildren().add(button2);
+
+
 
     }
 
