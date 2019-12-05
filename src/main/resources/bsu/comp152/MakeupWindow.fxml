@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="646.0" prefWidth="957.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bsu.comp152.j1maiaController">
+    <children>
+        <HBox layoutX="6.0" layoutY="6.0" prefHeight="637.0" prefWidth="948.0">
+            <children>
+                <VBox prefHeight="637.0" prefWidth="313.0">
+                    <children>
+                        <Label prefHeight="52.0" prefWidth="237.0" text="Choose Makeup Type:" textFill="#bf3939">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <MenuButton mnemonicParsing="false" text="Makeup Types:">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#selectMenuItem" text="Blush" />
+                                <MenuItem mnemonicParsing="false" onAction="#selectMenuItem" text="Bronzer" />
+                                <MenuItem mnemonicParsing="false" onAction="#selectMenuItem" text="Eyebrow" />
+                                <MenuItem mnemonicParsing="false" onAction="#selectMenuItem" text="Eyeliner" />
+                                <MenuItem mnemonicParsing="false" onAction="#selectMenuItem" text="Eyeshadow" />
+                                <MenuItem mnemonicParsing="false" onAction="#selectMenuItem" text="Foundation" />
+                                <MenuItem mnemonicParsing="false" onAction="#selectMenuItem" text="Lipstick" />
+
+                            </items>
+                        </MenuButton>
+                        <Button mnemonicParsing="false" onAction="#loadData" prefHeight="68.0" prefWidth="150.0" text="Get Makeup" />
+                    </children>
+                </VBox>
+                <VBox prefHeight="637.0" prefWidth="318.0">
+                    <children>
+                    </children></VBox>
+                <VBox prefHeight="637.0" prefWidth="316.0">
+                    <children>
+                        <ListView fx:id="ListControl" prefHeight="638.0" prefWidth="316.0" />
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>
