@@ -40,8 +40,15 @@ public class Main extends Application {
         button1.setTranslateY(-100);
         box.getChildren().add(button1);
         button1.setOnAction(this::openMakeupWindow);
+        Button button2 = new Button("Star Wars");
+        button2.setPrefSize(130,30);
+        button2.setTranslateY(-70);
+        box.getChildren().add(button2);
+        button2.setOnAction(this::openStarWarsWindow);
 
-    }
+
+
+}
     @FXML
     public  void openMakeupWindow(ActionEvent event){
         Parent root = null;
@@ -57,6 +64,22 @@ public class Main extends Application {
         recipeWindow.setTitle("Makeup");
         recipeWindow.show();
     }
+    @FXML
+    public  void openStarWarsWindow(ActionEvent event){
+        Parent root = null;
+        var loc = getClass().getResource("StarWarsWindow.fxml");
+        try {
+            root = FXMLLoader.load(loc);
+        }catch (IOException e){
+            System.out.println("Couldn't Find FXML file!!!!!!");
+        }
+        Scene windowContents = new Scene(root, 900,400);
+        Stage recipeWindow = new Stage();
+        recipeWindow.setScene(windowContents);
+        recipeWindow.setTitle("Star Wars");
+        recipeWindow.show();
+    }
+
 
 
 }
