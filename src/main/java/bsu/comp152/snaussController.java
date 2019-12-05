@@ -65,6 +65,7 @@ public class snaussController implements Initializable {
     public String getQueryParameters() {
         var joke = getJoke();
         var blacklist = getBlackList();
+        return "";
     }
 
     public void initialize(URL location, ResourceBundle resources) {
