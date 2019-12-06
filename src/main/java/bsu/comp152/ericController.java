@@ -11,15 +11,16 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputDialog;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ericController implements Initializable {
     @FXML
     private ListView<ericDataHandler.starDataType> ListControl;
-    private ListView<ericDataHandler.starDataType> ListControl1;
+    private ListView<filmsDataHandler.peopleDataType> ListControl1;
     private ericDataHandler Model;
-    private ericDataHandler Model1;
+    private filmsDataHandler Model1;
     private String category;
 
 
@@ -33,13 +34,12 @@ public class ericController implements Initializable {
         ObservableList<ericDataHandler.starDataType> dataToShow = FXCollections.observableArrayList(starList);
         ListControl.setItems(dataToShow);
     }
-    public String loadAdditionalData(String site){
+    public void loadAdditionalData(String site){
         var site2 = site;
-        Model = new ericDataHandler(site2);
-        var list = Model.getData();
-        ObservableList<ericDataHandler.starDataType> dataToShow = FXCollections.observableArrayList(list);
-        ListControl.setItems(dataToShow);
-        return site2;
+        Model1 = new filmsDataHandler(site2);
+        var list = Model1.getData1();
+        ObservableList<filmsDataHandler.peopleDataType> dataToShow1 = FXCollections.observableArrayList(list);
+        ListControl1.setItems(dataToShow1);
     }
     public String getQueryParameters(){
         var category = getCategory();
@@ -74,11 +74,12 @@ public class ericController implements Initializable {
                             nameInfo.setTitle(name.name);
                             nameInfo.setHeaderText("");
                             nameInfo.setHeaderText("Information about " + name.name + ":");
-                            //String film = name.films.get(0);
-                            //String films = loadAdditionalData(film);
+                            String film = name.films.get(0);
+                            loadAdditionalData(film);
+                            var filme = ListControl1.getSelectionModel().getSelectedItem();
                             nameInfo.setContentText("Name: " + name.name
                                     + "\nBirth year: " + name.birth_year +
-                                    "\nHeight: " + name.height + "\nSpecies: " + name.species + "\nFilms: " + name.films.get(0) + "\nStarships: "+ name.starships);
+                                    "\nHeight: " + name.height + "\nSpecies: " + name.species + "\nFilms: " + filme.name + "\nStarships: "+ name.starships);
                             nameInfo.showAndWait();
                         } else {
                             Alert nameInfo = new Alert(Alert.AlertType.INFORMATION);

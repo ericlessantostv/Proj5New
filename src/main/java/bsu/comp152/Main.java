@@ -9,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -31,6 +33,8 @@ public class Main extends Application {
             e.printStackTrace();
         }
         Scene windowContents = new Scene(box, 300, 400);
+        //var color = Paint.valueOf("blue");
+        //windowContents.setFill(color);
         primaryStage.setScene(windowContents);
         primaryStage.setTitle("Project 5");
         primaryStage.setResizable(false);
@@ -73,8 +77,12 @@ public class Main extends Application {
         }catch (IOException e){
             System.out.println("Couldn't Find FXML file!!!!!!");
         }
-        Scene windowContents = new Scene(root, 900,400);
+        Scene windowContents = new Scene(root, 760,550);
         Stage recipeWindow = new Stage();
+        var color = Paint.valueOf("blue");
+        windowContents.setFill(color);
+        recipeWindow.setResizable(false);
+
         recipeWindow.setScene(windowContents);
         recipeWindow.setTitle("Star Wars");
         recipeWindow.show();

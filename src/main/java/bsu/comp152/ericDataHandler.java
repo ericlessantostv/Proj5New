@@ -21,9 +21,9 @@ public class ericDataHandler {
     public ArrayList<starDataType> getData(){
         var requestBuilder = HttpRequest.newBuilder();
         var dataRequest = requestBuilder.uri(URI.create(webLocation)).build();
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(webLocation);
-        alert.showAndWait();
+        //Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        //alert.setHeaderText(webLocation);
+        //alert.showAndWait();
         HttpResponse<String> response = null;
         try{
             response = dataGrabber.send(dataRequest, HttpResponse.BodyHandlers.ofString());
@@ -43,13 +43,14 @@ public class ericDataHandler {
         var starData = jsonInterpreter.fromJson(usefulData, responseDataType.class);
         return starData.results;
     }
+
     class responseDataType{
         String title;
         float version;
         String href;
         ArrayList<starDataType> results;
-
     }
+
     class starDataType {
         String title;
         String href;
