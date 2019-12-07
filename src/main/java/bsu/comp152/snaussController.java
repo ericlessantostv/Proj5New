@@ -15,10 +15,7 @@ public class snaussController implements Initializable {
     @FXML
     private ListView<snaussDataHandler.jokeType> ListControl;
     private snaussDataHandler Model;
-    private RadioButton rb1;
-    private RadioButton rb2;
-    private RadioButton rb3;
-    private RadioButton rb4;
+    private String jokeType;
 
     public void loadData() {
         var site = "https://sv443.net/jokeapi/category";
@@ -34,41 +31,37 @@ public class snaussController implements Initializable {
 
 
 
-    public String getJoke(){
-
-        String result = "";
-
-        if (rb1.isSelected()) {
-            result = rb1.getText() ;
-
-        }
-        if (rb2.isSelected()) {
-            result = rb2.getText() ;
-
-        }
-        if (rb3.isSelected()) {
-            result = rb3.getText() ;
-
-        }
-        if (rb4.isSelected()) {
-            result = rb4.getText() ;
-
-        }
-        return result;
-
-    }
-
     public String getBlackList() {
         return null;
     }
 
     public String getQueryParameters() {
-        var joke = getJoke();
+        var joke = getJokeType();
         var blacklist = getBlackList();
+        return "/" + joke;
+    }
+
+    public String getJokeType() { return jokeType;}
+
+    public void selectMenuItem(javafx.event.ActionEvent actionEvent) {
+        var item = (MenuItem)actionEvent.getSource();
+        jokeType = item.getText();
     }
 
     public void initialize(URL location, ResourceBundle resources) {
-        loadData();
+        jokeType = "";
+        ListControl.getSelectionModel().selectedItemProperty().addListener(
+                new ChangeListener<snaussDataHandler.jokeType>() {
+                    @Override
+                    public void changed(ObservableValue<? extends snaussDataHandler.jokeType> observableValue, snaussDataHandler.jokeType jokeType, snaussDataHandler.jokeType t1) {
+                        var joke = ListControl.getSelectionModel() .getSelectedItem();
+                        Alert jokePresent = new Alert(Alert.AlertType.INFORMATION);
+                        jokePresent.setHeaderText("SetUp: " + joke.setup );
+                        jokePresent.setContentText("Joke: " + joke.delivery);
+
+                    }
+                }
+        );
 
     }
 }
