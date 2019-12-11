@@ -34,18 +34,19 @@ public class j1maiaController implements Initializable {
 
     public String getQueryParameters(){
         var makeup = getCategory();
-        return "?&product_type="+ makeup;
+        return "?product_type="+ makeup;
     }
 
     private String getCategory(){
-        TextInputDialog answer = new TextInputDialog("blush");
-        answer.setHeaderText("Gathering Information");
-        answer.setContentText("What kind of makeup do you want?");
-        Optional<String> result = answer.showAndWait();
-        if (result.isPresent())
-            return result.get();
-        else
-            return "";
+        return category;
+//        TextInputDialog answer = new TextInputDialog("blush");
+//        answer.setHeaderText("Gathering Information");
+//        answer.setContentText("What kind of makeup do you want?");
+//        Optional<String> result = answer.showAndWait();
+//        if (result.isPresent())
+//            return result.get();
+//        else
+//            return "";
     }
 
 

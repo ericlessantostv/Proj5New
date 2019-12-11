@@ -46,8 +46,6 @@ public class Main extends Application {
         box.getChildren().add(button2);
         button2.setOnAction(this::openStarWarsWindow);
 
-
-
 }
     @FXML
     public  void openMakeupWindow(ActionEvent event){
