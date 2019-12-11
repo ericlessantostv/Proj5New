@@ -21,12 +21,12 @@
                               <Image url="@../../../../../../../Documents/632727.jpg" />
                            </image>
                         </ImageView>
-                              <Button alignment="CENTER" contentDisplay="CENTER" layoutX="114.0" layoutY="129.0" mnemonicParsing="false" onAction="#loadData" opacity="0.9" prefHeight="39.0" prefWidth="161.0" style="-fx-background-color: mustard; -fx-border-color: white;" text="PRESS TO START" textFill="#fcff3d">
+                              <Button alignment="CENTER" contentDisplay="CENTER" layoutX="132.0" layoutY="126.0" mnemonicParsing="false" onAction="#loadData" opacity="0.9" prefHeight="24.0" prefWidth="118.0" style="-fx-background-color: mustard; -fx-border-color: white;" text="PRESS TO START" textFill="#fcff3d">
                            <font>
                               <Font name="Avenir Next Condensed Heavy Italic" size="13.0" />
                            </font>
                         </Button>
-                              <ListView fx:id="ListControl" layoutX="436.0" layoutY="27.0" prefHeight="491.0" prefWidth="285.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-width: 5;" />
+                              <ListView fx:id="ListControl" layoutX="436.0" layoutY="27.0" opacity="0.93" prefHeight="491.0" prefWidth="285.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-width: 5;" />
                         <Label alignment="TOP_LEFT" layoutX="63.0" opacity="0.82" prefHeight="83.0" prefWidth="343.0" style="-fx-text-fill: YELLOW;" text="STAR WARS ">
                            <font>
                               <Font name="Avenir Next Condensed Heavy Italic" size="57.0" />
@@ -37,9 +37,9 @@
                               <Font name="Avenir Next Condensed Heavy" size="33.0" />
                            </font>
                         </Label>
-                        <Label layoutX="24.0" layoutY="485.0" opacity="0.39" text="Made by Eric Santos" textFill="#fffc60">
+                        <Label layoutX="20.0" layoutY="503.0" opacity="0.39" text="MADE BY ERIC SANTOS" textFill="#fffc60">
                            <font>
-                              <Font name="Avenir Next Condensed Heavy Italic" size="18.0" />
+                              <Font name="Avenir Next Condensed Heavy Italic" size="10.0" />
                            </font>
                         </Label>
                      </children>

@@ -34,7 +34,7 @@ public class j1maiaController implements Initializable {
 
     public String getQueryParameters(){
         var makeup = getCategory();
-        return "?&product_type="+ makeup;
+        return "?brand="+ makeup;
     }
 
     private String getCategory(){
@@ -60,7 +60,7 @@ public class j1maiaController implements Initializable {
                         var makeUp = ListControl.getSelectionModel().getSelectedItem();
                         Alert makeupInfo = new Alert(Alert.AlertType.INFORMATION);
                         makeupInfo.setTitle("Information about "+makeUp.product_type);
-                        makeupInfo.setHeaderText("Ingredients: "+ makeUp.price);
+                        makeupInfo.setHeaderText("Ingredients: "+ makeUp.price + makeUp.name);
                         makeupInfo.setContentText("Here: "+makeUp.product_category);
                         makeupInfo.showAndWait();
                     }

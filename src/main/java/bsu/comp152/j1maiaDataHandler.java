@@ -57,6 +57,7 @@ class DataHandler {
     class makeupDataType {
         String product_type;
         String product_category;
+        String name;
         String brand;
         String product_tags;
         String price;
