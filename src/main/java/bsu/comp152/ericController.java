@@ -17,29 +17,32 @@ import java.util.ResourceBundle;
 public class ericController implements Initializable {
     @FXML
     private ListView<ericDataHandler.starDataType> ListControl;
-    private ListView<ericDataHandler.starDataType> ListControl1;
+    private ListView<filmsDataHandler.peopleDataType> ListControl1;
     private ericDataHandler Model;
-    private ericDataHandler Model1;
+    private filmsDataHandler Model1;
     private String category;
 
 
     public void loadData(){
         var site = "https://swapi.co/api/";
-        var params = getQueryParameters();
-        var query = site + params;
 
-        Model = new ericDataHandler(query);
-        var starList = Model.getData();
-        ObservableList<ericDataHandler.starDataType> dataToShow = FXCollections.observableArrayList(starList);
-        ListControl.setItems(dataToShow);
+            var params = getQueryParameters();
+            var query = site + params;
+
+            Model = new ericDataHandler(query);
+            var starList = Model.getData();
+            ObservableList<ericDataHandler.starDataType> dataToShow = FXCollections.observableArrayList(starList);
+            ListControl.setItems(dataToShow);
+
     }
     public String loadAdditionalData(String site){
         var site2 = site;
-        Model = new ericDataHandler(site2);
-        var list = Model.getData();
-        ObservableList<ericDataHandler.starDataType> dataToShow = FXCollections.observableArrayList(list);
-        ListControl.setItems(dataToShow);
-        return site2;
+        Model1 = new filmsDataHandler(site2);
+        var list = Model1.getData1();
+        ObservableList<filmsDataHandler.peopleDataType> dataToShow1 = FXCollections.observableArrayList(list);
+        String titleM = dataToShow1.toString();
+        return titleM;
+
     }
     public String getQueryParameters(){
         var category = getCategory();
@@ -71,14 +74,13 @@ public class ericController implements Initializable {
                         if (name.gravity == null) {
                             Alert nameInfo = new Alert(Alert.AlertType.INFORMATION);
                             System.out.println(name.films.get(0));
+                            String film = name.films.get(0);
                             nameInfo.setTitle(name.name);
                             nameInfo.setHeaderText("");
                             nameInfo.setHeaderText("Information about " + name.name + ":");
-                            //String film = name.films.get(0);
-                            //String films = loadAdditionalData(film);
                             nameInfo.setContentText("Name: " + name.name
                                     + "\nBirth year: " + name.birth_year +
-                                    "\nHeight: " + name.height + "\nSpecies: " + name.species + "\nFilms: " + name.films.get(0) + "\nStarships: "+ name.starships);
+                                    "\nHeight: " + name.height + "\nSpecies: " + name.species + "\nFilms: " + name.films.toString() + "\nStarships: "+ name.starships);
                             nameInfo.showAndWait();
                         } else {
                             Alert nameInfo = new Alert(Alert.AlertType.INFORMATION);
