@@ -78,7 +78,7 @@ class DataHandler {
 
         String product_type;
         String product_category;
-        String name;
+        //String name;
         String brand;
       //  String product_tags;
         String price;
