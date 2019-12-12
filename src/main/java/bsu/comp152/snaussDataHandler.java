@@ -14,12 +14,12 @@ public class snaussDataHandler {
     private HttpClient dataGrabber;
     private String webLocation;
 
-    public snaussDataHandler(String webLocation) {
+    public snaussDataHandler() {
         dataGrabber = HttpClient.newHttpClient();
-        this.webLocation = webLocation;
+
     }
 
-    public ArrayList<jokeType> getData() {
+    public jokeFilter getData(String webLocation) {
         var requestBuilder = HttpRequest.newBuilder();
         var dataRequest = requestBuilder.uri(URI.create(webLocation)).build();
         HttpResponse<String> response = null;
@@ -38,27 +38,22 @@ public class snaussDataHandler {
         }
         var usefulData = response.body();
         var jsonInterpreter = new Gson();
-        var theData = jsonInterpreter.fromJson(usefulData, jokeType.class);
-        return theData.results;
+        var theData = jsonInterpreter.fromJson(usefulData, jokeFilter.class);
+        return theData;
 
 
     }
-
-
-    class jokeType {
-        ArrayList<jokeType> results;
-        String category;
-        String type;
-        String setup;
-        String delivery;
-        String joke;
-        String id;
-
-        public java.lang.String toString() {
-            return "Joke: " + setup + "  Finish: " + delivery;
-        }
-
-    }
-
-
 }
+class jokeFilter {
+
+    String category;
+    String type;
+    String setup;
+    String delivery;
+    String joke;
+    String id;
+
+    }
+
+
+

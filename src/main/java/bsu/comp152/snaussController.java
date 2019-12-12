@@ -7,38 +7,48 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import org.w3c.dom.Text;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class snaussController implements Initializable {
     @FXML
-    private ListView<snaussDataHandler.jokeType> ListControl;
-    private snaussDataHandler Model;
+    public TextField setupField;
+    public TextField deliveryField;
+    private snaussDataHandler dataModel;
     private String jokeType;
+    private ArrayList<CheckBox> blacklistBoxes;
+    public TextField urlDisplay;
+    private CheckBox NSFW, Religious, Political;
+
+
+
+    public void initialize(URL location, ResourceBundle resources) {
+        blacklistBoxes = new ArrayList<CheckBox>();
+        blacklistBoxes.add(NSFW);
+        blacklistBoxes.add(Religious);
+        blacklistBoxes.add(Political);
+        dataModel = new snaussDataHandler();
+
+    }
 
     public void loadData() {
         var site = "https://sv443.net/jokeapi/category";
         var params = getQueryParameters();
-        var query = site + params;
-
-        Model = new snaussDataHandler(query);
-        var resultJoke = Model.getData();
-        ObservableList<snaussDataHandler.jokeType> theData = FXCollections.observableArrayList(resultJoke);
-        ListControl.setItems(theData);
-
-    }
+        site = site + params;
+        jokeFilter data = dataModel.getData(site);
+        displayData(data);
 
 
 
-    public String getBlackList() {
-        return null;
     }
 
     public String getQueryParameters() {
         var joke = getJokeType();
-        var blacklist = getBlackList();
-        return "/" + joke;
+        var blacklist = getBlacklist();
+        return "/" + joke + "?blacklistFlags=" + blacklist;
     }
 
     public String getJokeType() { return jokeType;}
@@ -48,20 +58,20 @@ public class snaussController implements Initializable {
         jokeType = item.getText();
     }
 
-    public void initialize(URL location, ResourceBundle resources) {
-        jokeType = "";
-        ListControl.getSelectionModel().selectedItemProperty().addListener(
-                new ChangeListener<snaussDataHandler.jokeType>() {
-                    @Override
-                    public void changed(ObservableValue<? extends snaussDataHandler.jokeType> observableValue, snaussDataHandler.jokeType jokeType, snaussDataHandler.jokeType t1) {
-                        var joke = ListControl.getSelectionModel() .getSelectedItem();
-                        Alert jokePresent = new Alert(Alert.AlertType.INFORMATION);
-                        jokePresent.setHeaderText("SetUp: " + joke.setup );
-                        jokePresent.setContentText("Joke: " + joke.delivery);
+    public void displayData(jokeFilter data) {
+        setupField.setText(data.setup);
+        deliveryField.setText(data.delivery);
+        urlDisplay.setText(data.joke);
+    }
 
-                    }
-                }
-        );
+    public String getBlacklist() {
+        var thyList = "";
+        for (var box: blacklistBoxes) {
+            if(box.isSelected()) {
+                thyList += box.getText();
+            }
 
+        }
+        return thyList;
     }
 }
