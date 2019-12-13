@@ -51,6 +51,11 @@ public class Main extends Application {
         button2.setTranslateY(-70);
         box.getChildren().add(button2);
         button2.setOnAction(this::openStarWarsWindow);
+        Button button3 = new Button("JokeAPI");
+        button3.setPrefSize(130,30);
+        button3.setTranslateY(-40);
+        box.getChildren().add(button3);
+        button3.setOnAction(this::openJokeAPI);
 
 }
     @FXML
@@ -85,6 +90,21 @@ public class Main extends Application {
 
         recipeWindow.setScene(windowContents);
         recipeWindow.setTitle("Star Wars");
+        recipeWindow.show();
+    }
+    @FXML
+    public  void openJokeAPI(ActionEvent event){
+        Parent root = null;
+        var loc = getClass().getResource("snaussMain.fxml");
+        try {
+            root = FXMLLoader.load(loc);
+        }catch (IOException e){
+            System.out.println("Couldn't Find FXML file!!!!!!");
+        }
+        Scene windowContents = new Scene(root, 1000,400);
+        Stage recipeWindow = new Stage();
+        recipeWindow.setScene(windowContents);
+        recipeWindow.setTitle("Joke API Demo");
         recipeWindow.show();
     }
 
