@@ -14,11 +14,13 @@ public class snaussDataHandler {
     private HttpClient dataGrabber;
     private String webLocation;
 
+    // Creates new HTTP Request
     public snaussDataHandler() {
         dataGrabber = HttpClient.newHttpClient();
 
     }
 
+    // Builds the "Connection" part of the project.
     public jokeFilter getData(String webLocation) {
         var requestBuilder = HttpRequest.newBuilder();
         var dataRequest = requestBuilder.uri(URI.create(webLocation)).build();
@@ -44,14 +46,11 @@ public class snaussDataHandler {
 
     }
 }
+// The information we need from this website
 class jokeFilter {
-
-    String category;
-    String type;
     String setup;
     String delivery;
     String joke;
-    String id;
 
     }
 

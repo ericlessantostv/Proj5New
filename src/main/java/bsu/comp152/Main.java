@@ -90,7 +90,7 @@ public class Main extends Application {
 
     public void openJokeAPI(ActionEvent event) {
         Parent root = null;
-        var loc = getClass().getResource("Main.fxml");
+        var loc = getClass().getResource("snaussMain.fxml");
         try {
             root = FXMLLoader.load(loc);
 
@@ -98,7 +98,7 @@ public class Main extends Application {
         catch (IOException e) {
             System.out.println("No FXML File");
         }
-        Scene jokeContents = new Scene(root, 300, 400);
+        Scene jokeContents = new Scene(root, 1000, 400);
         Stage jokeWindow = new Stage();
         jokeWindow.setScene(jokeContents);
         jokeWindow.setTitle("Showing Data");
